@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aybos❤️Elifsu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&family=Sacramento&family=Cormorant+Garamond&family=Parisienne&family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fce4ec;
+      background-image: linear-gradient(to bottom, #fce4ec, #fff0f5);
+      overflow-x: hidden;
+    }
+    input, textarea {
+      -webkit-user-modify: read-write-plaintext-only;
+      spellcheck: false;
+    }
+    .animated-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 20px;
+      font-size: 48px;
+      font-weight: bold;
+      color: #b30059;
+      font-family: 'Playfair Display', serif;
+    }
+    .animated-header .label {
+      margin-right: 10px;
+    }
+    .animated-header .word {
+      display: inline-block;
+      vertical-align: bottom;
+      color: #8b004d;
+      font-size: 48px;
+      font-weight: bold;
+    }
+    .animated-header .word.animate {
+  animation: fadeWord 6s ease-in-out;
+} 
+    @keyframes fadeWord {
+      0% { opacity: 0; transform: translateX(100%); }
+      10% { opacity: 1; transform: translateX(0); }
+      90% { opacity: 1; transform: translateX(0); }
+      100% { opacity: 0; transform: translateX(-100%); }
+    }
+    .password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fff0f5;
+      text-align: center;
+    }
+    .password-screen h1 {
+      color: #b30059;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .password-screen input[type="password"] {
+      padding: 10px;
+      font-size: 24px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid #b30059;
+      background-color: white;
+      color: #800040;
+      display: block;
+      margin: 0 auto;
+    }
+    .password-screen button {
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 20px;
+      border-radius: 10px;
+      background-color: #b30059;
+      color: white;
+      border: 2px solid #800040;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(179, 0, 89, 0.3);
+      transition: all 0.3s ease;
+    }
+    .password-screen button:hover {
+      background-color: #99004d;
+      border-color: #4d0026;
+      box-shadow: 0 6px 14px rgba(179, 0, 89, 0.4);
+    }
+    .error-message {
+      color: red;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .hidden { display: none; }
+    #contentContainer {
+      padding: 20px;
+    }
+    .media-section {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .media-section img,
+    .media-section video {
+      width: 1000px;
+      height: 450px;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .media-caption {
+      margin-top: 12px;
+      font-size: 32px;
+      font-weight: bold;
+      color: #800040;
+      font-family: 'Playfair Display', cursive;
+    }
+    .countdown {
+      text-align: center;
+      margin: 40px auto;
+      background-color: rgba(200, 162, 200, 0.4);
+      padding: 20px;
+      border-radius: 12px;
+      width: fit-content;
+      font-size: 24px;
+      font-weight: bold;
+      color: #5a0033;
+    }
+    .closing-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 1000px;
+      height: 450px;
+      margin: 40px auto 60px auto;
+      border-radius: 12px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: bold;
+      color: #660022;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    @media screen and (max-width: 768px) {
+      .media-section img,
+      .media-section video,
+      .closing-section {
+        width: 90%;
+        height: auto;
+      }
+      .animated-header,
+      .media-caption,
+      .countdown,
+      .closing-section {
+        font-size: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="password-screen" id="passwordScreen">
+    <h1>Şifreyi Giriniz</h1>
+    <input type="password" id="passwordInput" />
+    <button onclick="checkPassword()">Giriş</button>
+    <div class="error-message" id="errorMessage"></div>
+  </div>
+
+  <div id="mainContent" class="hidden">
+    <div class="animated-header">
+      <div class="label">Sen Benim Her Şeyimsin:</div>
+      <div class="word" id="rotatingWord">MUTLULUĞUM</div>
+    </div>
+
+    <div id="contentContainer">
+      <!-- Fotoğraf ve video alanları (21 adet ayrı ayrı yazılmış) -->
+      <div class="media-section"><img src="foto1.jpeg"><div class="media-caption">İlk fotoğrafımız... İlk planlı aktivitemiz sinemaya gittikten sonra çıkışta çekildiğimiz o foto.</div></div>
+      <div class="media-section"><img src="foto2.jpeg"><div class="media-caption">Sana ilk çiçek aldığım gün.Kızılay ve Sıhhiye'de sabah saat 8'de tek açık olan çıçekçiyi bulmuştum ve sana gül almıştım. Elifsu tabikide sosisli olsun daha çok isterdi ama çiçekle yetinmek zorunda kaldı ve o aylar sürecek n*h çekme akımı başlamış oldu.</div></div>
+      <div class="media-section"><img src="foto3.jpeg"><div class="media-caption">Elifsu'nun ağzından fav mekanım if sokak ve krispy cream açılmış yhaa duyan Aybos if sokak gezisi planlamıştır. Ayrıca kafasında bir bonus planıda vardır. İf sokağa çiçek getirtmek.Her şeyi planlamıştır adresi,kuryeyi herkesi ayarlamıştır tek duyması gereken Elifsu'nun tahmini varış saatidir. Keyfinedüşkünsu aynı gece birde kızılcık şerbo izleme seansı olunca ve keyifli keyıfli oje sürerken,arka planda gölbaşından çıkacağı saati crispy sırasını çiçek teslimat ayarlarını düşünen Aybosun popisinden ter damlamaktadır.Sonraki gün yine her şeyden habersiz Elifsu geç kalmış Aybos çiçek kuryesinin gelmek üzereyiz mesajıyla kalp krizi geçirmiş ama yineden kuryeye bir şekilde ulaşarak durumu çözmüştür. Arka planda acele etsin diye elfisuya hastayım diye yalan söylemek zorunda bile kalmıştır. </div></div>
+      <div class="media-section"><img src="foto4.jpeg"><div class="media-caption">Planlanan o Esko planı bff couple ile gerçekleştirilmiş ve Aybosun o günden bugüne telefonunun ekran resmi olacak olan o efsane foto ortaya şans eseri çıkmıştır.</div></div>
+      <div class="media-section"><img src="foto8.jpeg"><div class="media-caption">Dizayn haftasından çok sıkılmış olan askmla açık hava sinema gecesi pikniğimizden</div></div>
+      <div class="media-section"><img src="foto6.jpeg"><div class="media-caption">Yalın konserimizz</div></div>
+      <div class="media-section"><img src="foto5.jpeg"><div class="media-caption">Gölbaşı'na gidip gelmekten sıkılan Aybos Elif'ini daha çok görmek için yazın ev tutmayı planlayan arkadaşlarını örgütleyip 1 ay içinde ev tutmuştur. Eve ilk kez ziyarete gelecek olan Elifsuya tabikide Aybos sabah erkenden kalkıp taze çiçekler toplamıştır. </div></div>
+      <div class="media-section"><img src="foto7.jpeg"><div class="media-caption">Evimize ilk mobilyalar geldikten sonraki buluşmamızdan diji foto mak ile çekildiğimiz o foto.</div></div>
+      <div class="media-section"><img src="foto9.jpeg"><div class="media-caption">İlk baş başa büyük gezimiz.İstoooo.Hayatımın şuana kadar açık ara en iyi gezisi.Dolu dolu 3 gün istanbul ve biz.</div></div>
+      <div class="media-section"><img src="foto10..jpeg"><div class="media-caption">Dünyanın en taşş***lı kadını(fotoya dikkatli bakınız) edoş erdemle Dünyanın en güzel kızı elifsu buluşmasını gerçekleştirdik.</div></div>
+      <div class="media-section"><img src="foto11..jpeg"><div class="media-caption">Aybos favori kombine çantasıyla poz veriyor</div></div>
+      <div class="media-section"><img src="foto12.jpeg"><div class="media-caption">Asktanemi mezun ettikkkk veee bu bu bu güzellik nedir arkadaş elbise giymesi(bide beyaz giymişş kırmızıyı giyse💦💦💦) ysaklanmalı</div></div>
+      <div class="media-section"><video src="video1.mp4" controls autoplay muted loop><div class="media-caption">ASDFJSAFHKASJFDHKAKFHAASGDFAJK</div></div>
+      <div class="media-section"><img src="foto15.jpeg"><div class="media-caption">Elifsuya 100 ytllik maske alıp kendisi 25 ytllik maske yapınca suratı zımpara olan aybos pozu.</div></div>
+      <div class="media-section"><img src="foto14.jpeg"><div class="media-caption">Almanya yolcusu kalmasınn son fotomuz gitmeden.</div></div>
+      <div class="media-section"><img src="foto16.jpeg"><div class="media-caption">Temaslı aska bir süre mola çünkü I am happy to share that I started working at Nagel-Group in the Food Logistics-Product Department. Elifsuyu fotoğraflardan sevmeli 57 gün.</div></div>
+      <div class="media-section"><img src="foto17.jpeg"><div class="media-caption">Tr yetmişiyormuş gibi Deutschland da gözleri kamaştıran o güzellik abidesi.</div></div>
+      <div class="media-section"><img src="foto19.jpeg"><div class="media-caption">Almanyadan misafirimiz var komşularr. Göksu günümüz efendim bostons ziyaretiyle başladı ve elifsunun devasa bir muzu sütlü çikolataya düşürmesinden dolayı sütlü çikolatamız yüzde 98 oranında azaldı.</div></div>
+      <div class="media-section"><video src="video2.mp4" controls autoplay muted loop><div class="media-caption">Dünyanın en zevkli ilişkisi</div></div>
+      <div class="media-section"><img src="foto18.jpeg"><div class="media-caption">Devamında çok zevkli bir yunus turu yapıldı tabiki kaptan aybos elifsuya tek tur dahi pedal çevirtmedi.</div></div>
+      <div class="media-section"><img src="foto20.jpeg"><div class="media-caption">🥳🥳🥳Elif doğdu iyiki doğdu iyiki benim oldu iyiki varsın iyiki hayatımdasın iyiki her şeyim oldun iyiki benimle oldun🥳🥳🥳</div></div>
+      <div class="media-section"><img src="foto21.jpeg"><div class="media-caption">Maşallah şu çiftin güzelliğine bakk allah ayırmasın diyelim nazar değmesin diyelim 🧿🧿🧿.</div></div>
+      <div class="media-section"><img src="foto22.jpeg"><div class="media-caption">Uzun bir sınav molasının ardından Aybos ve Elifsu mutfaklara geri dönüyordu ve alışveriş sırasındaki şu bebeğin tatlılığı bakın bunu yemede ne yap şimdi. Çen onları alcanda zencefilli kurabiye mi yapçann. Yazarken tekrar hayran olmam. İşte böyle vurulmuşum kalpten sanaa.</div></div>
+      <div class="media-section"><img src="foto23.jpeg"><div class="media-caption">Aybosla Elifsu çanta almaya gider ama Yarabbim şu güzelliğe seksiliğe bir bak. bunu yaratırken hiç mi acımadın etraftakilere hergün görecekler ama o gidipte Aybosu öpcek. Bak şimdi kendi kendime tribe girdim askm sana çok bakmıyorlardır dimi.dimi</div></div>
+      <div class="media-section"><img src="foto24.jpeg"><div class="media-caption">Ara tatilden sonra Aybosla Elfi erken biten bir günde Altınpark yürüyüşü yapar. Ve GÜNEŞ'in öptüğü şu fotoğraf ortaya çıkar.41milyon kere maşallah şu tatlılığa güzelliğe🧿🧿🧿</div></div>
+      <div class="media-section"><img src="foto25.jpeg"><div class="media-caption">Veeee 365 gün 6 saattir birbirimizin olmamızın yıldönümü. Bundan 1 yıl 1 gün önce hayatım herhangi bir sıradanlıkta sürüyordu ama sen geldin seni gördüm, bana bir GÜNEŞ gibi doğdun ve ben dünyadaki en mutlu insan oldum. bu günden itibaren her gece son düşüncem sen her sabah ilk aklıma gelen yine sen oldun. sonsuza kadarda böyle olacak ve seni hep her şeyden çok seveceğim</div></div>
+      <div class="media-section"><img src="foto26.jpeg"><div class="media-caption">41 milyon kere daha maşallah şuna bak yaa. Heykeltıraş elinden çıkma sanki kusursuz, müthiş bu kadar güzelde olunmazz</div></div>
+      <div class="media-section"><img src="foto29.jpeg"><div class="media-caption">Her gün evden çıkmadan salonda profil fotosu çıkartıp gitceğimiz yere geç kalan Elifsu koyuyorum buraya. Bu fotonun çekildiği günlerde her gün yeni profil fotosu çıkıyodu. Yaaa işte benim sevgilim öyle güzeldir her gün her haliyle. </div></div>
+      <div class="media-section"><img src="foto27.jpeg"><div class="media-caption">Bir gün Elifsu saçını kendi kendine kesip yanlışlıkla kahküllü prenses oldu. Zaten saçına yaptığı şeyler sonuçta istemsizce şaheser dönüşüyordu hep ve yine aynısı oldu. Şu saçların bebekliğine bak. Liseliye döndü bebek olduu.</div></div>
+      <div class="media-section"><img src="foto28.jpeg"><div class="media-caption">ASHGFKSDFHAKHSDKFAHKFKAJSDHFKJASKDFJKHASKDFHahflkjshfhasdflhalksA. Adriana gelsinde güzellik görsün benim sevgilim bir başka güzel.</div></div>
+      <div class="media-section"><img src="foto30.jpeg"><div class="media-caption">Profil fotosu akımının son başyapıtı. Kahküllü, tatlı bakışlı, yan profilden bakan(öpücüksüz poz) ELİF.  </div></div>
+
+      <!-- Sayaç bölümü -->
+      <div class="countdown" id="countdown"></div>
+
+      <!-- Kapanış bölümü -->
+      <div class="closing-section" style="background-image: url('alıntıson hal.jpg');">
+        <div contenteditable="false" style="color: #ff1d8a;">SEN BENİM HER ŞEYİMSİN. SENİN OLMADIĞIN BİR HAYATI HAYAL DAHİ EDEMİYORUM VE ASLA DA ETMEK İSTEMİYORUM. SEN BENİM İÇİN ZAMANIN KENDİSİSİN. SEN YOKKEN PİLİ BİTMİŞ BİR SAATTEN FARKSIZIM. TİKLEMELER KALP ATIŞLARIM GİBİ DURMUŞ. SENİ SEVİYORUM KELİMELERİN ULAŞAMAYACAĞI KADAR DERİNDEN, TÜM VARLIĞIMLA. DİLERİM Kİ ASLA CAYMAZSIN BENİM OLMAKTAN.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const password = "04032024";
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      if (input === password) {
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").classList.remove("hidden");
+      } else {
+        document.getElementById("errorMessage").textContent = "Yanlış Girdin Elifsuu😠😤.";
+      }
+    }
+
+    const words = [
+      "MUTLULUĞUM","NEŞEM","YAŞAMA SEVİNCİM","HAYAT ENERJİM","MOTİVASYONUM","BFFİM","ELİFSUM","BİTANEM","ASKTANEM","AİLEM",
+      "NEFESİM","KALBİMSİN","ASKIMSIN","HUZURUMSUN","DÜNYAMSIN","ÖMRÜMSÜN","CENNETİMSİN","HAYATIMSIN","GÖZBEBEĞİMSİN",
+      "GÜCÜMSÜN","IŞIĞIMSIN","İÇİMDEKİ SESSİN","İLK ASKIMSN","TEK ASKIMSN","KALBİMİN SAHİBİSİN","VARLIK NEDENİMSİN","KADERİMSİN","BENLİĞİMSİN"
+    ];
+    let wordIndex = 0;
+const wordElement = document.getElementById("rotatingWord");
+
+function showNextWord() {
+  // Animasyonu sıfırla
+  wordElement.classList.remove("animate");
+  void wordElement.offsetWidth; // reflow zorlaması (hack)
+  wordElement.classList.add("animate");
+
+  // Yeni kelimeyi ekle
+  wordElement.textContent = words[wordIndex];
+  wordIndex = (wordIndex + 1) % words.length;
+}
+
+setInterval(showNextWord, 6000);
+showNextWord(); // ilk çağrı
+
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("2024-03-04T12:30:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = now - targetDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = `${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye geçti.`;
+    }, 1000);
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const videos = document.querySelectorAll(".auto-play-video");
+  
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+  
+      videos.forEach((video) => observer.observe(video));
+    });
+  </script>
+             <main className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-blue-100 text-gray-900">
+        <section className="flex items-center justify-center h-screen">
+          <h1 className="text-6xl font-bold text-center px-4 drop-shadow-md">
+            Sadece sen hep sen her nefesimde sen.
+          </h1>
+        </section>
+  
+                   <p className="text-lg font-medium text-gray-800 leading-relaxed">
+              Seni ne kadar çok sevdiğimi kelimelere dökmek zor... ama yine de
+              denemek istedim. Bu sayfa, birlikte geçirdiğimiz güzel anılara ve
+              geleceğe bir bakış olsun istedim. 💖
+            </p>
+          </motion.div>
+        </section>
+  
+                   <p className="text-lg font-medium text-gray-800 leading-relaxed">
+              Her zaman yanında olacağım. Bu siteyi de küçük bir hatıra olarak
+              bırakıyorum. Seni çok seviyorum.
+            </p>
+          </motion.div>
+        </section>
+      </main>
+    
+</body>
+</html>
